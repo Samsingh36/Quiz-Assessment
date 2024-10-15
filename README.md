@@ -1,7 +1,3 @@
-Here's a README file for your Quiz Assessment project:
-
----
-
 # Quiz Assessment Project
 
 The **BrightChamps Quiz Assessment** is a dynamic web application that allows users to create custom quizzes, take quizzes, and track scores. Built using **React.js** for the frontend, the app provides a seamless experience for quiz creation, question management, and real-time scoring.
@@ -78,6 +74,4 @@ The application uses **Bootstrap** for responsive layouts and additional custom 
 
 This project and its contents, including code and documentation, are the intellectual property of **Samar Pratap Singh**.
 
----
 
-Let me know if you'd like any further adjustments!
