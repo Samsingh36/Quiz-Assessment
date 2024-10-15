@@ -1,0 +1,84 @@
+
+body {
+  background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.landing-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+}
+
+.card-container {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.app-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+  animation: slideIn 1.5s ease-out;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.start-btn, .create-btn {
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.start-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+}
+
+.start-btn:hover {
+  background-color: #218838;
+  transform: translateY(-3px);
+}
+
+.create-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+.create-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-3px);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
