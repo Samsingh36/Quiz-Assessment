@@ -5,11 +5,14 @@ const Score = ({ score, setScore, setCurrentQuestion, setQuizStarted, setTimer, 
     const navigate = useNavigate();
 
     const handleFinish = () => {
-        handleQuizCompletion();
-        setCurrentQuestion(0);
-        setTimer(60);
-        setScore(0);
-        navigate('/');
+        const userConfirmed = window.confirm("Are you sure you want to go to the home page?");
+        if (userConfirmed) {
+            handleQuizCompletion();
+            setCurrentQuestion(0);
+            setTimer(60);
+            setScore(0);
+            navigate('/');
+        }
     };
 
     const getCongratulatoryMessage = () => {

@@ -92,6 +92,14 @@ const App = () => {
         }
     };
 
+    const handleCreateQuizClick = () => {
+        if (quizTaken) {
+            alert("You have already taken the quiz. Please reset the quiz first before creating a new one.");
+        } else {
+            window.location.href = "/create-quiz";  
+        }
+    };
+
     return (
         <Router>
             <Routes>
@@ -132,9 +140,9 @@ const App = () => {
                                         <button className="btn btn-lg start-btn mx-2" onClick={handleStartNewQuiz}>
                                             Start New Quiz
                                         </button>
-                                        <Link to="/create-quiz" className="btn btn-lg create-btn mx-2">
+                                        <button className="btn btn-lg create-btn mx-2" onClick={handleCreateQuizClick}>
                                             Create New Quiz
-                                        </Link>
+                                        </button>
                                         {quizTaken && (
                                             <button className="btn btn-lg reset-btn" onClick={handleResetQuiz}>
                                                 Reset Quiz
