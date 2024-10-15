@@ -88,7 +88,7 @@ const App = () => {
         }
 
         if (isCorrect) {
-            setScore(prevScore => prevScore + 1);
+            setScore(prevScore => prevScore + currentQuestionData.marks); 
         }
     };
 
