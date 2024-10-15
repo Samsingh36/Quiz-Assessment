@@ -1,4 +1,4 @@
-# Quiz Assessment Project
+# BrightChamps Quiz Assessment
 
 The **BrightChamps Quiz Assessment** is a dynamic web application that allows users to create custom quizzes, take quizzes, and track scores. Built using **React.js** for the frontend, the app provides a seamless experience for quiz creation, question management, and real-time scoring.
 
