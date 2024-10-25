@@ -88,7 +88,7 @@ const App = () => {
         }
 
         if (isCorrect) {
-            setScore(prevScore => prevScore + 1);
+            setScore(prevScore => prevScore + currentQuestionData.marks); 
         }
     };
 
@@ -96,6 +96,11 @@ const App = () => {
         if (quizTaken) {
             alert("You have already taken the quiz. Please reset the quiz first before creating a new one.");
         } else {
+            if (questions.length === 0) {
+                alert("You will be able to create a quiz after this.");
+            } else {
+                alert("You will be able to modify the quiz.");
+            }
             window.location.href = "/create-quiz";  
         }
     };

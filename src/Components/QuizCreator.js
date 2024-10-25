@@ -8,19 +8,18 @@ const QuizCreator = () => {
     const [marks, setMarks] = useState(1);
     const [questions, setQuestions] = useState([]);
     const [timerDuration, setTimerDuration] = useState(10);
-    const navigate = useNavigate();
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
     useEffect(() => {
         const savedQuestions = JSON.parse(localStorage.getItem('quizQuestions')) || [];
         setQuestions(savedQuestions);
+        setCurrentQuestionIndex(savedQuestions.length);
     }, []);
 
     const handleSaveQuestion = () => {
-        console.log("Attempting to save the question...");
-
         if (!questionText || options.some(opt => !opt) || !correctOption) {
             alert("Please fill in all fields.");
-            return false;
+            return;
         }
 
         const newQuestion = {
@@ -34,9 +33,7 @@ const QuizCreator = () => {
         const updatedQuestions = [...questions, newQuestion];
         setQuestions(updatedQuestions);
         localStorage.setItem('quizQuestions', JSON.stringify(updatedQuestions));
-        console.log("Question saved successfully.");
         alert("Question Saved");
-        return true;
     };
 
     const handleResetFields = () => {
@@ -45,6 +42,45 @@ const QuizCreator = () => {
         setCorrectOption('');
         setMarks(1);
         setTimerDuration(10);
+        setCurrentQuestionIndex(questions.length);
+    };
+
+    const handlePrevQuestion = () => {
+        if (currentQuestionIndex > 0) {
+            const prevIndex = currentQuestionIndex - 1;
+            const prevQuestion = questions[prevIndex];
+            setQuestionText(prevQuestion.question);
+            setOptions(prevQuestion.options);
+            setCorrectOption(prevQuestion.correctAnswer);
+            setMarks(prevQuestion.marks);
+            setTimerDuration(prevQuestion.timer);
+            setCurrentQuestionIndex(prevIndex);
+        }
+    };
+
+    const handleNextQuestion = () => {
+        if (currentQuestionIndex < questions.length - 1) {
+            const nextIndex = currentQuestionIndex + 1;
+            const nextQuestion = questions[nextIndex];
+            setQuestionText(nextQuestion.question);
+            setOptions(nextQuestion.options);
+            setCorrectOption(nextQuestion.correctAnswer);
+            setMarks(nextQuestion.marks);
+            setTimerDuration(nextQuestion.timer);
+            setCurrentQuestionIndex(nextIndex);
+        }
+    };
+
+    const handleAddNewQuestion = () => {
+        if (!questionText || options.some(opt => !opt) || !correctOption) {
+            alert("Please fill in all fields before adding a new question.");
+            return;
+        }
+
+        handleResetFields();
+        if (questions.length > 0) {
+            setCurrentQuestionIndex(questions.length);
+        }
     };
 
     return (
@@ -110,8 +146,14 @@ const QuizCreator = () => {
                 <button onClick={handleSaveQuestion} className="btn btn-primary">
                     Save Question
                 </button>
-                <button onClick={handleResetFields} className="btn btn-secondary ms-2">
+                <button onClick={handleAddNewQuestion} className="btn btn-primary ms-2">
                     Add New Question
+                </button>
+                <button onClick={handlePrevQuestion} className="btn btn-secondary ms-2" disabled={currentQuestionIndex <= 0}>
+                    Previous Question
+                </button>
+                <button onClick={handleNextQuestion} className="btn btn-secondary ms-2" disabled={currentQuestionIndex >= questions.length - 1}>
+                    Next Question
                 </button>
             </div>
         </div>
